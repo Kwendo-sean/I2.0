@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Imani 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+            overflow-x: hidden; 
+            font-size: 1.2rem;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .letter-container {
+            max-width: 90%;
+            margin: auto;
+            font-size: 1.3rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            line-height: 1.5;
+            font-family: 'Dancing Script', cursive;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #loveLetter {
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: none;
+        }
+
+        button {
+            font-size: 1.4rem;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .yes-btn {
+            background: #ff69b4;
+            color: white;
+            animation: glow 1s infinite alternate;
+        }
+
+        .no-btn {
+            background: #ff3b3b;
+            color: white;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(255, 105, 180, 0.7); }
+            to { box-shadow: 0 0 20px rgba(255, 20, 147, 0.9); }
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .secret-surprise {
+            margin-top: 20px;
+            display: none;
+            font-size: 1.5rem;
+        }
+
+        /* Floating Hearts */
+        .floating-heart {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
+            opacity: 0.8;
+            cursor: pointer;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+
+        /* Spotify Music Player */
+        .music-container {
+            margin-top: 30px;
+        }
+
+        iframe {
+            border-radius: 12px;
+            width: 100%;
+            max-width: 320px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dear Imani 💖</h1>
+
+    <div class="letter-container">
+        <p id="loveLetter"></p>
+    </div>
+
+    <!-- Yes/No Buttons -->
+    <div class="buttons" id="buttons">
+        <h2>Did you like this? 😘</h2>
+        <button class="yes-btn" onclick="startHeartGame()">YES 💖</button>
+        <button class="no-btn" onclick="explodeHearts()">NO 😡</button>
+    </div>
+
+    <!-- Secret Surprise -->
+    <div class="secret-surprise" id="surprise">
+        🎁 **SURPRISE!!!** 🎁 <br>
+        Click here for something special:  
+        <a href="https://open.spotify.com/playlist/YOUR_PLAYLIST_LINK" target="_blank" style="color: #fff; font-weight: bold; text-decoration: none;">💖 Click Me 💖</a>
+    </div>
+
+    <!-- Embedded Spotify Player: Cherry by Lana Del Rey -->
+    <div class="music-container">
+        <h2>🎶 A Song for You 🎶</h2>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1Ym6aMuT5bliaZMC67AmPp?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <script>
+        const letterText = `From the moment I met you, my world became brighter.
+
+Every little thing about you—your smile, your laugh, the way you say my name—makes my heart race in the best way.
+
+I never knew I could feel this way about someone, but here you are... changing everything.
+
+Even though miles may separate us, my heart is always with you. And I can’t wait for the day we close that distance.
+
+Until then, just know this:
+
+You are my favorite person. And you always will be. 💖`;
+
+        let index = 0;
+        function typeLetter() {
+            if (index < letterText.length) {
+                document.getElementById("loveLetter").innerHTML += letterText.charAt(index);
+                index++;
+                setTimeout(typeLetter, 40);
+            } else {
+                document.getElementById("buttons").style.display = "block";
+            }
+        }
+        window.onload = function () {
+            typeLetter();
+        };
+
+        function startHeartGame() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement("div");
+                    heart.classList.add("floating-heart");
+                    heart.style.left = Math.random() * 100 + "vw";
+                    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+                    heart.onclick = () => {
+                        heart.remove();
+                        document.getElementById("surprise").style.display = "block";
+                    };
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 500);
+            }
+        }
+
+        function explodeHearts() {
+            alert("NO IS NOT AN OPTION. 💖💖💖");
+        }
+    </script>
+
+</body>
+</html>
